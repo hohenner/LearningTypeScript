@@ -4,9 +4,15 @@ let trackingNumber: string = "FD123455";
 let createDate: Date = new Date();
 let originalCost = 425;
 
+enum InventoryItemType {
+    Computer = "computer",
+    Furniture = "furniture"
+}
+
 interface InventoryItem {
     displayName: string;
-    inventoryType: string;
+    // inventoryType: InventoryItemType;
+    inventoryType: "computer" | "furniture";
     readonly trackingNumber: string;
     createDate: Date;
     originalCost?: number;
@@ -29,6 +35,7 @@ inventoryItem.createDate = new Date();
 
 saveInventoryItem({
     displayName: "MacBook Pro 15 Retina",
+    // inventoryType: InventoryItemType.Computer,
     inventoryType: "computer",
     trackingNumber: "MBP123456",
     createDate: new Date(),
