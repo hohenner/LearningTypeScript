@@ -7,9 +7,13 @@ let originalCost = 425;
 interface InventoryItem {
     displayName: string;
     inventoryType: string;
-    trackingNumber: string;
+    readonly trackingNumber: string;
     createDate: Date;
-    originalCost: number;
+    originalCost?: number;
+
+    // these two are equivalant
+    addNote?(note:string): string;
+    addNote1?: (note:string) => string;
 }
 
 function getInventoryItem(trackingNumber: string): InventoryItem {
@@ -27,3 +31,10 @@ let updatedInventoryItem = inventoryItem;
 inventoryItem.createDate = new Date();
 
 saveInventoryItem(inventoryItem);
+
+saveInventoryItem({
+    displayName: "MacBook Pro 15 Retina",
+    inventoryType: "computer",
+    trackingNumber: "MBP123456",
+    createDate: new Date()
+});
